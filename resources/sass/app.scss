@@ -1,0 +1,1173 @@
+// Fonts
+@import url('https://fonts.bunny.net/css?family=Nunito');
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css");
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap');
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import 'bootstrap/scss/bootstrap';
+
+@import "~dropzone/dist/dropzone.css";
+@import "dropzone_custom";
+
+@import "~datatables.net-bs5";
+@import "~datatables.net-buttons-bs5";
+@import "datatables.net-fixedcolumns-bs5";
+@import "datatables.net-select-bs5";
+
+@import "fullcalendar";
+
+@import "~daterangepicker/daterangepicker.css";
+@import "daterangepicker_custom";
+
+@import "bootstrap-slider";
+@import "bootstrap-slider_custom";
+
+//@import '~@sweetalert2/theme-bootstrap-4/bootstrap-4';
+@import '~@sweetalert2/theme-borderless/borderless';
+@import "sweetalert2_custom";
+
+@import "~select2/src/scss/core";
+//https://coder.social/apalfrey/select2-bootstrap-5-theme/issues/75 FIX!!!!
+$s2bs5-border-color: $border-color;
+@import "~select2-bootstrap-5-theme/src/include-all";
+@import "select2_custom";
+
+@import "trix/dist/trix.css";
+@import "trix_custom";
+
+@import "template_default";
+@import "switch-color-mode";
+
+//Custom
+hr {
+    border-color: $border-color;
+}
+@include color-mode(dark) {
+    hr {
+        border-color: $border-color-dark;
+    }
+}
+
+.word-wrap {
+    word-wrap: anywhere;
+}
+
+@include media-breakpoint-down(sm) {
+    .zoom-on-sm {
+        zoom: .75;
+    }
+}
+
+//Layout
+body {
+    > .image-container {
+        display: none;
+    }
+    background-image: linear-gradient(180deg, #84F0B220 0%, #fafafa 375px);//linear-gradient(180deg, #ffffff 0%, #f3fbff 100%);
+    background-size:cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+@include color-mode(dark) {
+    body {
+        > .image-container {
+            display: block;
+        }
+        background-image: linear-gradient(180deg, #2D3140 0%, #19272C 100%);
+    }
+}
+
+#preloader {
+    backdrop-filter: blur(72.5px);
+    background-color: rgba(255, 255, 255, 0) !important;
+}
+
+main {
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+}
+
+* main + footer,
+[data-bs-theme="dark"] main + footer[data-bs-theme="light"] { //LIGHT MODE
+    background-image: linear-gradient(180deg, #ffffff 0%, #f3fbff 100%);
+    .nav-link:not(:hover) {
+        color: $body-secondary-color;
+    }
+}
+
+[data-bs-theme="dark"] main + footer,
+[data-bs-theme="light"] main + footer[data-bs-theme="dark"] {    //DARK MODE
+    background-image: linear-gradient(170deg, #2D3140 0%, #19272C 100%);
+
+    .nav-link:not(:hover) {
+        color: $body-secondary-color-dark;
+    }
+}
+
+*,
+[data-bs-theme="dark"] [data-bs-theme="light"] {    //LIGHT MODE
+    .bg-body-emphasis {
+        background-image: linear-gradient(180deg, #ffffff 0%, #f3fbff 100%);
+    }
+}
+
+[data-bs-theme="dark"],
+[data-bs-theme="light"] [data-bs-theme="dark"] {    //DARK MODE
+    .bg-body-emphasis {
+        background-image: linear-gradient(170deg, #2D3140 0%, #19272C 100%);
+    }
+}
+
+
+//Buttons
+.btn {
+    backdrop-filter: blur(72.5px);
+
+    &.badge {
+        color: var(--bs-btn-color);
+
+        &:hover {
+            color: var(--bs-btn-hover-color);
+        }
+
+        &:active {
+            color: var(--bs-btn-active-color);
+        }
+
+        &:disabled,&.disabled {
+            color: var(--bs-btn-disabled-color);
+        }
+    }
+}
+
+*,
+[data-bs-theme="dark"] [data-bs-theme="light"] {    //LIGHT MODE
+    .btn-primary {
+        @include button-variant(
+                rgba(106, 255, 192, 0.4),   // background
+                transparent,                // border
+                rgba(33, 37, 41, 0.75),     // color
+                rgba(106, 255, 192, 1),     // hover-background
+                rgba(106, 255, 192, 0.23),  // hover-border
+                rgba(27, 36, 32, 1),        // hover-color
+                rgba(106, 255, 192, .8),    // active-background
+                rgba(106, 255, 192, 0.23),  // active-border
+                rgba(27, 36, 32, 1),        // active-color
+        );
+    }
+    .btn-outline-primary {
+        @include button-variant(
+                transparent,                // background
+                $border-color,              // border
+                #51BD93,                    // color
+                rgba(106, 255, 192, 1),     // hover-background
+                rgba(106, 255, 192, 0.23),  // hover-border
+                rgba(27, 36, 32, 1),        // hover-color
+                rgba(106, 255, 192, .8),    // active-background
+                rgba(106, 255, 192, 0.23),  // active-border
+                rgba(27, 36, 32, 1),        // active-color
+                transparent,                // disabled-background
+                $border-color,              // disabled-border
+                $btn-link-disabled-color,   // disabled-color
+        );
+    }
+
+    .btn-secondary {
+        @include button-variant(
+                #263653,                    // background
+                transparent,                // border
+                rgba(255, 255, 255, .7),    // color
+                rgba(114, 98, 214, 1),      // hover-background
+                transparent,                // hover-border
+                rgba(255, 255, 255, 1),     // hover-color
+                rgba(114, 98, 214, .8),     // active-background
+                transparent,                // active-border
+                rgba(255, 255, 255, 1),     // active-color
+        )
+    }
+    .btn-outline-secondary {
+        @include button-variant(
+                transparent,                // background
+                $border-color,              // border
+                #263653,                    // color
+                rgba(114, 98, 214, 1),      // hover-background
+                transparent,                // hover-border
+                rgba(255, 255, 255, 1),     // hover-color
+                rgba(114, 98, 214, .8),     // active-background
+                transparent,                // active-border
+                rgba(255, 255, 255, 1),     // active-color
+                transparent,                // disabled-background
+                $border-color,              // disabled-border
+                $btn-link-disabled-color,   // disabled-color
+        );
+    }
+
+    .btn-info {
+        @include button-variant(
+                rgba(179, 174, 240, .85),   // background
+                transparent,                // border
+                rgba(114, 98, 214, 1),      // color
+                rgba(179, 174, 240, 1),     // hover-background
+                rgba(179, 174, 240, .85),   // hover-border
+                rgba(114, 98, 214, 1),      // hover-color
+                rgba(179, 174, 240, .8),    // active-background
+                rgba(179, 174, 240, .85),   // active-border
+                rgba(114, 98, 214, 1),      // active-color
+        )
+    }
+    .btn-outline-info {
+        @include button-variant(
+                transparent,                // background
+                $border-color,              // border
+                rgba(114, 98, 214, .85),    // color
+                rgba(179, 174, 240, 1),     // hover-background
+                rgba(179, 174, 240, .85),   // hover-border
+                rgba(114, 98, 214, 1),      // hover-color
+                rgba(179, 174, 240, .8),    // active-background
+                rgba(179, 174, 240, .85),   // active-border
+                rgba(114, 98, 214, 1),      // active-color
+                transparent,                // disabled-background
+                $border-color,              // disabled-border
+                $btn-link-disabled-color,   // disabled-color
+        );
+    }
+
+    .btn-success {
+        @include button-variant(
+                $success,                   // background
+                transparent,                // border
+                rgba(33, 37, 41, 0.75),     // color
+                lighten($success, 1),       // hover-background
+                transparent,                // hover-border
+                $success-text-emphasis,     // hover-color
+                lighten($success, 1),       // active-background
+                transparent,                // active-border
+                $success-text-emphasis,     // active-color
+        )
+    }
+    .btn-outline-success {
+        @include button-variant(
+                transparent,                // background
+                $border-color,              // border
+                darken($success, 25),       // color
+                lighten($success, 1),       // hover-background
+                transparent,                // hover-border
+                $success-text-emphasis,     // hover-color
+                lighten($success, 1),       // active-background
+                transparent,                // active-border
+                $success-text-emphasis,     // active-color
+                transparent,                // disabled-background
+                $border-color,              // disabled-border
+                $btn-link-disabled-color,   // disabled-color
+        );
+    }
+
+    .btn-warning {
+        @include button-variant(
+                $warning,                   // background
+                transparent,                // border
+                $body-color,                // color
+                $warning,                   // hover-background
+                transparent,                // hover-border
+                $warning-text-emphasis,     // hover-color
+                $warning,                   // active-background
+                transparent,                // active-border
+                $warning-text-emphasis,     // active-color
+        )
+    }
+    .btn-outline-warning {
+        @include button-variant(
+                transparent,                // background
+                $border-color,              // border
+                darken($warning, 5),        // color
+                $warning,                   // hover-background
+                transparent,                // hover-border
+                $warning-text-emphasis,     // hover-color
+                $warning,                   // active-background
+                transparent,                // active-border
+                $warning-text-emphasis,     // active-color
+                transparent,                // disabled-background
+                $border-color,              // disabled-border
+                $btn-link-disabled-color,   // disabled-color
+        );
+    }
+
+    .btn-danger {
+        @include button-variant(
+                rgba(255, 106, 106, 0.7),   // background
+                transparent,                // border
+                rgba(115, 52, 52, 1),       // color
+                rgba(255, 106, 106, .85),   // hover-background
+                rgba(255, 106, 106, 0.7),   // hover-border
+                rgba(115, 52, 52, 1),       // hover-color
+                rgba(255, 106, 106, .75),   // active-background
+                rgba(255, 106, 106, 0.7),   // active-border
+                rgba(115, 52, 52, 1),       // active-color
+        )
+    }
+    .btn-outline-danger {
+        @include button-variant(
+                transparent,                // background
+                $border-color,              // border
+                rgba(255, 106, 106, .85),   // color
+                rgba(255, 106, 106, .85),   // hover-background
+                rgba(255, 106, 106, 0.7),   // hover-border
+                rgba(115, 52, 52, 1),       // hover-color
+                rgba(255, 106, 106, .75),   // active-background
+                rgba(255, 106, 106, 0.7),   // active-border
+                rgba(115, 52, 52, 1),       // active-color
+                transparent,                // disabled-background
+                $border-color,              // disabled-border
+                $btn-link-disabled-color,   // disabled-color
+        );
+    }
+}
+
+[data-bs-theme="dark"],
+[data-bs-theme="light"] [data-bs-theme="dark"] {    //DARK MODE
+    .btn-primary {
+        @include button-variant(
+                rgba(106, 255, 192, 0.23),  // background
+                transparent,                // border
+                #5ac394,                    // color
+                rgba(106, 255, 192, 1),     // hover-background
+                rgba(106, 255, 192, 0.23),  // hover-border
+                rgba(27, 36, 32, 1),        // hover-color
+                rgba(106, 255, 192, .7),    // active-background
+                rgba(106, 255, 192, 0.23),  // active-border
+                rgba(27, 36, 32, 1),        // active-color
+        );
+    }
+    .btn-outline-primary {
+        @include button-variant(
+                transparent,                // background
+                $border-color-dark,         // border
+                #5ac394,                    // color
+                rgba(106, 255, 192, 1),     // hover-background
+                rgba(106, 255, 192, 0.23),  // hover-border
+                rgba(27, 36, 32, 1),        // hover-color
+                rgba(106, 255, 192, .8),    // active-background
+                rgba(106, 255, 192, 0.23),  // active-border
+                rgba(27, 36, 32, 1),        // active-color
+                transparent,                // disabled-background
+                $border-color-dark,         // disabled-border
+                $btn-link-disabled-color,   // disabled-color
+        );
+    }
+
+    .btn-secondary {
+        @include button-variant(
+                rgba(255, 255, 255, .7),    // background
+                transparent,                // border
+                #263653,                    // color
+                rgba(255, 255, 255, 1),     // hover-background
+                transparent,                // hover-border
+                rgba(114, 98, 214, 1),      // hover-color
+                rgba(255, 255, 255, 1),     // active-background
+                transparent,                // active-border
+                rgba(114, 98, 214, .8),     // active-color
+        )
+    }
+    .btn-outline-secondary {
+        @include button-variant(
+                transparent,                // background
+                $border-color-dark,         // border
+                rgba(255, 255, 255, .7),    // color
+                rgba(255, 255, 255, 1),     // hover-background
+                transparent,                // hover-border
+                rgba(114, 98, 214, 1),      // hover-color
+                rgba(255, 255, 255, 1),     // active-background
+                transparent,                // active-border
+                rgba(114, 98, 214, .8),     // active-color
+                transparent,                // disabled-background
+                $border-color-dark,         // disabled-border
+                $btn-link-disabled-color,   // disabled-color
+        )
+    }
+
+    .btn-info {
+        @include button-variant(
+                rgba(179, 174, 240, .85),   // background
+                transparent,                // border
+                rgba(114, 98, 214, 1),      // color
+                rgba(179, 174, 240, 1),     // hover-background
+                rgba(179, 174, 240, .85),   // hover-border
+                rgba(114, 98, 214, 1),      // hover-color
+                rgba(179, 174, 240, .8),    // active-background
+                rgba(179, 174, 240, .85),   // active-border
+                rgba(114, 98, 214, 1),      // active-color
+        )
+    }
+    .btn-outline-info {
+        @include button-variant(
+                transparent,                // background
+                $border-color-dark,         // border
+                rgba(179, 174, 240, .85),   // color
+                rgba(179, 174, 240, 1),     // hover-background
+                rgba(179, 174, 240, .85),   // hover-border
+                rgba(114, 98, 214, 1),      // hover-color
+                rgba(179, 174, 240, .8),    // active-background
+                rgba(179, 174, 240, .85),   // active-border
+                rgba(114, 98, 214, 1),      // active-color
+                transparent,                // disabled-background
+                $border-color-dark,         // disabled-border
+                $btn-link-disabled-color,   // disabled-color
+        );
+    }
+
+    .btn-success {
+        @include button-variant(
+                rgba(26, 139, 87, 1),       // background
+                transparent,                // border
+                $success-bg-subtle-dark,    // color
+                $success,                   // hover-background
+                transparent,                // hover-border
+                $success-text-emphasis,     // hover-color
+                $success,                   // active-background
+                transparent,                // active-border
+                $success-text-emphasis,     // active-color
+        )
+    }
+    .btn-outline-success {
+        @include button-variant(
+                transparent,                // background
+                $border-color-dark,         // border
+                rgba(26, 139, 87, 1),       // color
+                $success,                   // hover-background
+                transparent,                // hover-border
+                $success-text-emphasis,     // hover-color
+                $success,                   // active-background
+                transparent,                // active-border
+                $success-text-emphasis,     // active-color
+                transparent,                // disabled-background
+                $border-color-dark,         // disabled-border
+                $btn-link-disabled-color,   // disabled-color
+        );
+    }
+
+    .btn-warning {
+        @include button-variant(
+                rgba(255, 255, 0, 0.4),     // background
+                transparent,                // border
+                $body-color,                // color
+                $warning,                   // hover-background
+                transparent,                // hover-border
+                $warning-text-emphasis,     // hover-color
+                $warning,                   // active-background
+                transparent,                // active-border
+                $warning-text-emphasis,     // active-color
+        )
+    }
+    .btn-outline-warning {
+        @include button-variant(
+                transparent,                // background
+                $border-color-dark,         // border
+                darken($warning, 10),       // color
+                $warning,                   // hover-background
+                transparent,                // hover-border
+                $warning-text-emphasis,     // hover-color
+                $warning,                   // active-background
+                transparent,                // active-border
+                $warning-text-emphasis,     // active-color
+                transparent,                // disabled-background
+                $border-color-dark,         // disabled-border
+                $btn-link-disabled-color,   // disabled-color
+        );
+    }
+
+    .btn-danger {
+        @include button-variant(
+                rgba(255, 106, 106, 0.7),   // background
+                transparent,                // border
+                rgba(115, 52, 52, 1),       // color
+                rgba(255, 106, 106, .85),   // hover-background
+                rgba(255, 106, 106, 0.7),   // hover-border
+                rgba(115, 52, 52, 1),       // hover-color
+                rgba(255, 106, 106, .75),   // active-background
+                rgba(255, 106, 106, 0.7),   // active-border
+                rgba(115, 52, 52, 1),       // active-color
+        )
+    }
+    .btn-outline-danger {
+        @include button-variant(
+                transparent,                // background
+                $border-color-dark,         // border
+                rgba(255, 106, 106, 0.7),   // color
+                rgba(255, 106, 106, .85),   // hover-background
+                rgba(255, 106, 106, 0.7),   // hover-border
+                rgba(115, 52, 52, 1),       // hover-color
+                rgba(255, 106, 106, .75),   // active-background
+                rgba(255, 106, 106, 0.7),   // active-border
+                rgba(115, 52, 52, 1),       // active-color
+                transparent,                // disabled-background
+                $border-color-dark,         // disabled-border
+                $btn-link-disabled-color,   // disabled-color
+        );
+    }
+}
+
+*,
+[data-bs-theme="dark"] [data-bs-theme="light"] { //LIGHT MODE
+    .btn-close {
+        filter: none;
+    }
+}
+
+.btn-info {
+    color: rgba(114, 98, 214, 1);
+}
+.btn {
+    transition: all 0.3s ease !important;
+
+    &.btn-wider-custom {
+        //min-width: min(100%, 150px);
+    }
+
+    &:hover {
+        //transform: translateY(-1px) !important;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2) !important;
+    }
+}
+.btn-check + .btn {
+    position: relative;
+    border-radius: 20px;
+    @extend .py-4;
+    @extend .py-md-5;
+}
+.btn-check:checked + .btn {
+    &::before {
+        content: '';
+        position: absolute;
+        bottom: 6px;
+        right: 6px;
+        width: 18px;
+        height: 18px;
+
+        background-color: currentColor; /* Matches button text color */
+        -webkit-mask: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" class="bi bi-check2-circle" viewBox="0 0 16 16"> <path d="M2.5 8a5.5 5.5 0 0 1 8.25-4.764.5.5 0 0 0 .5-.866A6.5 6.5 0 1 0 14.5 8a.5.5 0 0 0-1 0 5.5 5.5 0 1 1-11 0"/> <path d="M15.354 3.354a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0z"/> </svg>') no-repeat center center;
+        mask: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" class="bi bi-check2-circle" viewBox="0 0 16 16"> <path d="M2.5 8a5.5 5.5 0 0 1 8.25-4.764.5.5 0 0 0 .5-.866A6.5 6.5 0 1 0 14.5 8a.5.5 0 0 0-1 0 5.5 5.5 0 1 1-11 0"/> <path d="M15.354 3.354a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0z"/> </svg>') no-repeat center center;
+        -webkit-mask-size: contain;
+        mask-size: contain;
+        background-size: contain;
+    }
+}
+
+
+
+// Popovers
+.popover {
+    box-shadow: var(--bs-popover-box-shadow);
+    backdrop-filter: blur(72.5px);
+
+    .popover-header {
+        color: var(--bs-heading-color);
+        border-bottom: none;
+    }
+
+    .popover-body {
+        padding-top: 0;
+    }
+}
+
+//Offcanvas
+.offcanvas {
+    //box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2) !important;
+    backdrop-filter: blur(72.5px);
+}
+
+.offcanvas,
+.navbar-nav {
+    .nav-link {
+        padding: $offcanvas-padding-y $offcanvas-padding-x;
+
+        &.active, &:active {
+            color: $nav-tabs-link-active-color;
+        }
+        &:hover, &:focus {
+            color: $nav-link-hover-color;
+        }
+    }
+}
+.offcanvas-fixed {
+    & ~ * {
+        transition: all $offcanvas-transition-duration ease;
+        min-width: min(100vw, map-get($grid-breakpoints, lg));
+    }
+
+    &.offcanvas-start.showing ~ *, &.offcanvas-start.show ~ * {
+        margin-left: $offcanvas-horizontal-width;
+    }
+    &.offcanvas-start.hiding ~ * {
+        margin-left: 0 !important;
+    }
+    &.offcanvas-end.showing ~ *, &.offcanvas-end.show ~ * {
+        margin-right: $offcanvas-horizontal-width;
+    }
+    &.offcanvas-end.hiding ~ * {
+        margin-right: 0 !important;
+    }
+    &.offcanvas-top.showing ~ *, &.offcanvas-top.show ~ * {
+        margin-top: $offcanvas-vertical-height;
+    }
+    &.offcanvas-top.hiding ~ * {
+        margin-top: 0 !important;
+    }
+    &.offcanvas-bottom.showing ~ *, &.offcanvas-bottom.show ~ * {
+        margin-bottom: $offcanvas-vertical-height;
+    }
+    &.offcanvas-bottom.hiding ~ * {
+        margin-bottom: 0 !important;
+    }
+}
+
+.nav-link:not(.active,:active) {
+    .h6, .h6, h5, .h5, h4, .h4, h3, .h3, h2, .h2, h1, .h1 {
+        color: var(--bs-tertiary-color);
+    }
+}
+
+.navbar {
+    > :first-child {
+        border: 1px solid $border-color-translucent;
+        border-radius: 100px;
+
+        > * {
+            margin-top: .25rem;
+            margin-bottom: .25rem;
+        }
+    }
+
+    .navbar-brand {
+        margin-left: 1.25rem;
+
+        #navbar-brand-on-scroll {
+            display: none !important;
+        }
+    }
+
+    .navbar-nav {
+        justify-content: center;
+        flex-direction: row;
+
+        .nav-link {
+            padding: 0 $navbar-nav-link-padding-x;
+            color: $navbar-light-color;
+            font-size: 16px;
+            font-weight: $nav-link-font-weight;
+
+            &.active, &:active {
+                color: $nav-tabs-link-active-color !important;
+            }
+            //&:hover, &:focus {
+            //    color: $nav-link-hover-color !important;
+            //}
+            transition: opacity 0.3s ease;
+            opacity: 1; /* Ensure the hovered item stays fully visible */
+        }
+        &:hover .nav-link {
+            opacity: 0.5;
+        }
+
+        .nav-link:hover {
+            opacity: 1;
+        }
+    }
+
+    .navbar-custom-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 45px;
+        font-size: 15px;
+        font-weight: $font-weight-base;
+
+        i {
+            @extend .fs-2;
+            margin-left: -12px;
+            margin-right: 10px;
+        }
+
+        &[data-bs-target="#offcanvasNavbarMenu"] {
+            padding-left: 21.5px;
+            padding-right: 21.5px;
+
+            i {
+                @extend .fs-5;
+                margin-right: -12px;
+            }
+        }
+    }
+
+    &.sticky-top-custom {
+        @extend .sticky-top;
+
+        > :first-child {
+            background-color: white;
+            backdrop-filter: blur(72.5px);
+        }
+
+        > :first-child,
+        .navbar-brand img,
+        .navbar-nav .nav-link {
+            transition: all .3s ease;
+        }
+
+        &.active {
+            > :first-child {
+                background-color: white;
+            }
+
+            .navbar-brand {
+                #navbar-brand-on-scroll {
+                    display: inline-block !important;
+                }
+
+                :not(#navbar-brand-on-scroll) {
+                    display: none !important;
+                }
+            }
+
+            .navbar-nav {
+                .nav-link {
+                    color: $navbar-light-color;
+                }
+            }
+
+            .navbar-custom-btn.btn-primary {
+                @extend .btn-info;
+            }
+        }
+    }
+
+    @include media-breakpoint-down(lg) {
+        padding-top: 0;
+
+        > :first-child {
+            border-top: 0;
+            border-radius: 0;
+        }
+
+        .navbar-brand {
+            margin-left: 0;
+        }
+    }
+}
+@include color-mode(dark) {
+    .navbar.sticky-top-custom:not(.active) > :first-child {
+        background-color: transparent;
+    }
+
+    .nav-link:not(:hover,:focus,.active,:active,.disabled,:disabled),
+    .navbar .navbar-nav .nav-link {
+        color: $navbar-dark-color;
+    }
+}
+
+//Dropdowns
+.dropdown-menu {
+    box-shadow: $dropdown-box-shadow;
+}
+@include color-mode(dark) {
+    .dropdown-menu {
+        background-color: $dropdown-dark-bg;
+    }
+}
+@include color-mode(light) {
+    .dropdown-menu {
+        background-color: $dropdown-bg; //kvoli study layoutu kde mam data-bs-theme="light" na dropdown
+    }
+}
+
+//Modals
+.modal {
+    backdrop-filter: blur(72.5px);
+
+    .display-contact-modal {
+        font-size: 48px;
+        line-height: .85em;
+
+        @include media-breakpoint-up(lg) {
+            font-size: 100px;
+        }
+
+        span {
+            font-family: 'DM Serif Text', serif;
+            font-style: italic;
+            font-weight: 300;
+        }
+    }
+}
+
+.modal .btn-close[data-bs-dismiss="modal"],
+.swal2-close {
+        position: fixed;
+        top: 25px;
+        right: 5px;
+        z-index: 1100;
+
+        @include media-breakpoint-up(md) {
+            top: 40px;
+            right: 40px;
+        }
+}
+
+.swal2-close {
+    font-size: 1em;
+    color: transparent !important;
+    @extend .btn-close;
+
+    &:hover {
+        background: transparent var(--bs-btn-close-bg) center/1em auto no-repeat;
+    }
+}
+
+//Tables
+.table.dataTable {
+    .btn.btn-sm {
+        @extend .py-2;
+    }
+}
+
+//Forms
+.form-floating {
+    > :disabled ~ label,
+    > .form-control:disabled ~ label { // Required for `.form-control`s because of specificity
+        &::after {
+            background-color: transparent;
+        }
+    }
+}
+
+//Pagination
+.pagination .page-link {
+    transition: all 0.3s ease !important;
+
+    &:not(:hover,:focus,:active,:disabled) {
+        color: rgba(33, 37, 41, 0.75);
+    }
+
+    &:hover {
+        //transform: translateY(-1px) !important;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2) !important;
+    }
+}
+@if $enable-dark-mode {
+    @include color-mode(dark) {
+        .pagination .page-link {
+            &:not(:hover,:focus,:active,:disabled) {
+                color: rgba(255, 255, 255, 0.75);
+            }
+        }
+    }
+}
+
+.carousel-control-prev-icon, .carousel-control-next-icon {
+    opacity: .5;
+    transition: all 0.3s ease !important;
+}
+
+
+
+
+.bg-primary-subtle-custom:not(:hover) {
+    background-color: transparent !important;
+}
+
+//Select2
+*,
+[data-bs-theme="dark"] [data-bs-theme="light"] { //LIGHT MODE
+    .select2-container--bootstrap-5 .select2-dropdown {
+        background-color: $dropdown-bg;
+    }
+}
+[data-bs-theme="dark"],
+[data-bs-theme="light"] [data-bs-theme="dark"] { //DARK MODE
+    .select2-container--bootstrap-5 .select2-dropdown {
+        background-color: $dropdown-dark-bg;
+    }
+}
+
+//Swal2
+.swal2-container {
+    background-color: transparent !important;
+    backdrop-filter: blur(72.5px);
+
+    .swal2-popup {
+        .swal2-title {
+            color: $body-color;
+        }
+    }
+
+    .input-group label {
+        color: $body-color;
+    }
+}
+@include color-mode(dark) {
+    .swal2-container {
+        //background-color: rgba(25, 39, 44, .2) !important;
+        background-color: transparent !important;
+
+        .swal2-popup {
+            background-color: transparent;
+            .swal2-title {
+                color: $body-color-dark;
+            }
+        }
+
+        .input-group label {
+            color: $body-color-dark;
+        }
+    }
+}
+
+//Daterangepicker
+.daterangepicker {
+    backdrop-filter: blur(72.5px);
+}
+
+//Cards
+.card {
+    .card-header {
+        border-bottom-width: 0;
+        padding-bottom: 0;
+    }
+    //.card-footer {
+    //    border-top-width: 0;
+    //    padding-top: 0;
+    //}
+}
+
+.row-card-group-lg {
+    @extend .g-0;
+    > * {
+        .card {
+            @extend .h-100;
+        }
+
+        @include media-breakpoint-down(lg) {
+            + * .card {
+                border-top: 0;
+            }
+
+            &:not(:last-child) .card {
+                @include border-bottom-radius(0);
+
+                .card-img-top,
+                .card-header {
+                    // stylelint-disable-next-line property-disallowed-list
+                    border-top-left-radius: 0;
+                    border-top-right-radius: 0;
+                }
+            }
+
+            &:not(:first-child) .card {
+                @include border-top-radius(0);
+
+                .card-img-bottom,
+                .card-footer {
+                    // stylelint-disable-next-line property-disallowed-list
+                    border-bottom-left-radius: 0;
+                    border-bottom-right-radius: 0;
+                }
+            }
+        }
+        @include media-breakpoint-up(lg) {
+            + * .card {
+                border-left: 0;
+            }
+
+            &:not(:last-child) .card {
+                @include border-end-radius(0);
+
+                .card-img-top,
+                .card-header {
+                    // stylelint-disable-next-line property-disallowed-list
+                    border-top-right-radius: 0;
+                }
+                .card-img-bottom,
+                .card-footer {
+                    // stylelint-disable-next-line property-disallowed-list
+                    border-bottom-right-radius: 0;
+                }
+            }
+
+            &:not(:first-child) .card {
+                @include border-start-radius(0);
+
+                .card-img-top,
+                .card-header {
+                    // stylelint-disable-next-line property-disallowed-list
+                    border-top-left-radius: 0;
+                }
+                .card-img-bottom,
+                .card-footer {
+                    // stylelint-disable-next-line property-disallowed-list
+                    border-bottom-left-radius: 0;
+                }
+            }
+        }
+    }
+}
+
+.custom-img-card {
+    height: 250px;
+    min-height: 150px;
+    max-height: 40vw;
+}
+.custom-img-card .card-img {
+    //filter: brightness(75%);
+    filter: brightness(60%);
+    transition: filter 0.3s ease;
+}
+
+.custom-img-card:hover .card-img {
+    //filter: brightness(100%);
+    filter: brightness(75%);
+}
+//@include color-mode(dark) {
+//    .custom-img-card .card-img {
+//        filter: brightness(60%);
+//    }
+//
+//    .custom-img-card:hover .card-img {
+//        filter: brightness(75%);
+//    }
+//}
+
+//Tools
+.text-title-gradient {
+    background-image: linear-gradient(rgb(255, 211, 106) 0%, rgb(155, 144, 214) 100%);
+
+    -webkit-background-clip: text!important;
+    background-clip: text!important;
+    -webkit-text-fill-color: transparent!important;
+    -webkit-text-fill-color: transparent!important;
+}
+.row-tools-card-group-custom {
+    @extend .g-0;
+
+    .col {
+        .card {
+            border-radius: 0;
+            @extend .border-bottom;
+            @extend .border-end;
+
+            a {
+                color: rgb(106, 255, 192);
+                transition: filter 0.3s ease;
+                filter: brightness(80%);
+            }
+            a:not(:disabled):not(.disabled):hover {
+                filter: brightness(100%);
+            }
+        }
+
+        @include media-breakpoint-down(md) {
+            &:nth-child(n) .card {
+                border-right: none !important;
+            }
+            &:nth-last-child(-n + 1) .card {
+                border-bottom: none !important;
+            }
+        }
+        @include media-breakpoint-up(md) {    //Ked su 3 vedla seba!
+            &:nth-child(3n) .card {
+                border-right: none !important;
+            }
+            &:nth-last-child(-n + 3) .card {
+                border-bottom: none !important;
+            }
+        }
+    }
+}
+@include color-mode(dark) {
+    .row-tools-card-group-custom {
+        .col .card {
+            a {
+                //filter: brightness(60%);
+            }
+
+            a:hover {
+                //filter: brightness(100%);
+            }
+        }
+    }
+}
+//Elearning
+.custom-img-container {
+    width: 100%;
+    max-width: 890px;
+    margin-right: auto;
+    margin-left: auto;
+
+    img {
+        height: auto;
+        max-height: 400px;
+    }
+}
+
+
+
+
+
+
+
+//Zaznamy
+.row-table {
+    @extend .d-flex, .flex-column, .flex-md-row, .mb-3;
+    font-size: 90%;
+
+    .col {
+        @extend .col;
+        min-width: 175px;
+
+        &.col-table-2 {
+            flex-grow: 2;
+            //min-width: 350px;
+        }
+
+        .input-group {
+            margin-bottom: 0 !important;
+
+            &.rounded-start-0 select ~ .select2-container--bootstrap-5 .select2-selection {
+                @extend .rounded-start-0;
+            }
+            &.rounded-end-0 select ~ .select2-container--bootstrap-5 .select2-selection {
+                @extend .rounded-end-0;
+            }
+        }
+
+        @include media-breakpoint-down(md) {
+            &:not(:first-child):not(:last-child) .form-control {
+                border-radius: 0 !important;
+            }
+            &:first-child .form-control {
+                border-bottom-left-radius: 0 !important;
+                border-bottom-right-radius: 0 !important;
+            }
+            &:last-child .form-control {
+                border-top-left-radius: 0 !important;
+                border-top-right-radius: 0 !important;
+            }
+        }
+        @include media-breakpoint-up(md) {
+            &:not(:first-child):not(:last-child) .form-control {
+                border-radius: 0 !important;
+            }
+            &:first-child .form-control {
+                border-top-right-radius: 0 !important;
+                border-bottom-right-radius: 0 !important;
+            }
+            &:last-child .form-control {
+                border-top-left-radius: 0 !important;
+                border-bottom-left-radius: 0 !important;
+            }
+        }
+    }
+}
+
+

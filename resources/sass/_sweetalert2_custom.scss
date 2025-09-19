@@ -1,0 +1,26 @@
+
+$color-mode-type: data;
+
+*,
+[data-bs-theme="dark"] [data-bs-theme="light"] {    //LIGHT MODE
+    div:where(.swal2-container) .swal2-html-container {
+        color: $body-color;
+    }
+}
+[data-bs-theme="dark"],
+[data-bs-theme="light"] [data-bs-theme="dark"] { //DARK MODE
+    div:where(.swal2-container) .swal2-html-container {
+        color: $body-color-dark;
+    }
+}
+
+@if $enable-dark-mode {
+    @include color-mode(dark) {
+        .swal2-popup {
+            background-color: var(--bs-body-bg);
+        }
+        .swal2-title {
+            color: var(--bs-body-color);
+        }
+    }
+}
